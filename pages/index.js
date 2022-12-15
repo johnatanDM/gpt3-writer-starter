@@ -10,6 +10,31 @@ const Home = () => {
     setUserInput(event.target.value);
   };
 
+  const [userInputJob, setUserInputJob] = useState('');
+  const onUserChangedJob = (event) => {
+    setUserInputJob(event.target.value);
+  };
+
+/*   const [userInputXP, setUserInputXP] = useState('');
+  const onUserChangedXP = (event) => {
+    setUserInputXP(event.target.value);
+  };
+
+  const [userInputEducation, setUserInputEducation] = useState('');
+  const onUserChangedEducation = (event) => {
+    setUserInputEducation(event.target.value);
+  };
+
+  const [userInputLanguages, setUserInputLanguages] = useState('');
+  const onUserChangedLanguages = (event) => {
+    setUserInputLanguages(event.target.value);
+  };
+
+  const [userInputDigitalHabilities, setUserInputDigitalHabilities] = useState('');
+  const onUserChangedDigitalHabilities = (event) => {
+    setUserInputDigitalHabilities(event.target.value);
+  }; */
+
   const [apiOutput, setApiOutput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -22,7 +47,7 @@ const Home = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userInput }),
+      body: JSON.stringify({ userInput, userInputJob }),
     });
   
     const data = await response.json();
@@ -48,6 +73,36 @@ const Home = () => {
           </div>
         </div>
         <div className="prompt-container">
+          <input
+            placeholder='Escreva a vaga para a qual está aplicando'
+            className='prompt'
+            value={userInputJob}
+            onChange={onUserChangedJob}
+          />;
+          {/* <input
+            placeholder='Escreva a vaga para a qual está aplicando'
+            className='prompt-box'
+            value={userInputJob}
+            onChange={onUserChangedJob}
+          />;
+          <input
+            placeholder='Escreva a vaga para a qual está aplicando'
+            className='prompt-box'
+            value={userInputJob}
+            onChange={onUserChangedJob}
+          />;
+          <input
+            placeholder='Escreva a vaga para a qual está aplicando'
+            className='prompt-box'
+            value={userInputJob}
+            onChange={onUserChangedJob}
+          />;
+          <input
+            placeholder='Escreva a vaga para a qual está aplicando'
+            className='prompt-box'
+            value={userInputJob}
+            onChange={onUserChangedJob}
+          />; */}
           <textarea 
             placeholder="Experiência profissional, educação, competências linguísticas e digitais, habilidades e projetos pessoais" 
             className="prompt-box" 

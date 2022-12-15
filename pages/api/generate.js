@@ -5,14 +5,20 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const basePromptPrefix = "";
 const generateAction = async (req, res) => {
+    const prompt = 
+    `
+    crie um texto curto sobre mim. Em primeira pessoa. em estilo Profissional. Para colocar em um currículo.
+    vaga: ${req.body.userInputJob} 
+    ${req.body.userInput}
+    texto:
+    `;
   // Run first prompt
-  console.log(`API: ${basePromptPrefix}${req.body.userInput}`)
+  console.log(`API: ${prompt}`)
 
   const baseCompletion = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `${basePromptPrefix}${req.body.userInput}`,
+    prompt: `${prompt}`,
     temperature: 0.7,
     max_tokens: 250,
   });
